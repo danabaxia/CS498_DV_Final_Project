@@ -14,7 +14,7 @@ charts.chart1 = function() {
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
   // get data
-  data = d3.csv("/data/chart1.csv", function(data) {
+  data = d3.csv("data/chart1.csv", function(data) {
     for (var i = 0; i < 5; i++) {
         console.log(data[i].food);
         console.log(data[i].count);
