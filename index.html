@@ -1,1 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Narrative Visualization</title>
+  <link rel="stylesheet" type="text/css" href="styles/fullpage.min.css"></style>
+  <link rel="stylesheet" type="text/css" href="styles/style.css"></style>
+</head>
+<body>
 
+  <div id="fullpage">
+    <div class="section">
+
+      <div class="slide" data-anchor="welcome">
+        <h1>What Americans Out for Eating?</h1>
+        <h2>a food explore based on Yelp dataset</h2>
+        <div class="intro">
+          <p>&nbsp;</p>
+          <div>Created by Jingbo Han for CS416 Data Visualization at UIUC</div>
+        </div>
+      </div>
+
+      <div class="slide" data-anchor="dataset">
+        <h2>The Dataset</h2>
+        <div class="intro">
+          <p>
+            The Yelp dataset is a subset of bussiness, reviews, and user data, which contains restruants location, reviews, catorgy and ectc. 
+          </p>
+          <p>
+            The purpose of this visualization is to explore the most popular food nationwide and regionwide. 
+            <a class="section-1-button" rel="noopener" href="#charts/about">About the Visualization</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="slide" data-anchor="about">
+        <h2>About the Visualization</h2>
+        <div class="intro">
+          <p>
+            <strong>Interactive Slideshow</strong>
+            This narrative visualization is presented as  an interactive slideshow structure to guide users through differrent steps to the final conlcusion.
+            User can click the arrow to flip between the slides. 
+          </p>
+          <p>
+            <strong>Scenes</strong>
+            This visualization consists of three scenes, following the same template of visualizing the data based on the geography, bar chart, bubule chart, 
+            providing a very consistent information display.
+          </p>
+          <p>
+            <strong>Annotations</strong>
+            Anotation is used in chart 1 of the scene 1,  to emphasize the ranking order starting from top popular food, also draw viewers attention to focus on the first several top ranking food.
+          </p>
+          <p>
+            <strong>Parameters</strong>
+            Chart 2 provides the parameters of reviews count and allow the user to explore the data of intersting states. Chart 3 provides the parameters of the review score based on parameters of states and food category,
+            so that the user can find out the best review score by state and food type.
+          </p>
+          <p>
+            <strong>Triggers</strong>
+            Chart 3 allows the user to filter out the review score based on the food type. With different food category, the buble chart can be updated based on the updates of the filtered data.
+          </p>
+        </div>
+      </div>
+      
+      <div class="slide" data-anchor="chart1">
+        <h3>The Number of Open Resturants by Category in USA</h3>
+        <div class="chart chart1">
+          <svg id="svg1"></svg>
+        </div>
+        <div class="intro">
+          <p>
+            This bar chart shows the number of the food places classfied by the food type. We can easily find out 
+            the top most popular food places that are open in USA are Coffee shop, Pizza and brunch. Those are three top choice 
+            of Americans going out for eating
+          </p>
+
+        </div>
+      </div>
+      <div class="slide" data-anchor="chart2">
+        <h3>The Visiting Popuarity by States</h3>
+        <div class="chart chart2">
+          <svg id="svg2"></svg>
+        </div>
+        <div class="intro">
+          <p>
+            This map is create to show the popularity of the food places across the country. The darker color means higher visits number and Yelp reviews. 
+            As we can see, California, Florida, New York are some of the darker area where more Resturants are present. It reflects the impact of tourism 
+            indrusty on resturants bussiness.
+          </p>
+        </div>
+      </div>
+      <div class="slide" data-anchor="chart3">
+        <h3>Review Score of Different Food by States</h3>
+        <h4 id="title_chart3">Ameriacan</h4>
+        <div class="chart chart3">
+          <svg id="svg3"></svg>
+          <form>
+            <input type="button" class="btn btn-primary" value="American" id="button1" onClick="updateChart3Data()"></input>
+            <input type="button" class="btn btn-primary" value="Chinese" id="button2" onClick="updateChart3Data2()"></input>
+            <input type="button" class="btn btn-primary" value="Mexican" id="button3" onClick="updateChart3Data3()"></input>
+            <input type="button" class="btn btn-primary" value="Brunch" id="button4" onClick="updateChart3Data4()"></input>
+            <input type="button" class="btn btn-primary" value="Coffee" id="button5" onClick="updateChart3Data5()"></input>
+            <input type="button" class="btn btn-primary" value="Pizza" id="button6" onClick="updateChart3Data6()"></input>
+          </form>
+        </div>
+        <div class="intro">
+          <p>
+            This buble chart may give you some idea what places you can go if you like certain type of food. It visulizes the food review scores 
+            based on the states and food type. By clikcing the food menu button below the chart, user can explore the review scores in different states.    
+          </p>
+        </div>
+      </div>
+      <div class="slide" data-anchor="source">
+        <h2>Sources</h2>
+        <div class="intro">
+          <p>
+            <strong>Dataset</strong><br/>
+            <a href="https://www.kaggle.com/luiscorter/netflix-original-films-imdb-scores" target="_blank">
+              https://www.kaggle.com/luiscorter/netflix-original-films-imdb-scores
+            </a>
+          </p>
+          <p>
+            <strong>Fullpage.js (used for slideshow)</strong><br/>
+            <a href="https://github.com/alvarotrigo/fullPage.js" target="_blank">
+              https://github.com/alvarotrigo/fullPage.js
+            </a>
+          </p>
+          <p>
+            <strong>Source code</strong><br/>
+            <a href="https://github.com/skyripley/cs416-data-visualization" target="_blank">
+              https://github.com/skyripley/cs416-data-visualization
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+
+  <script src="scripts/scrolloverflow.min.js"></script>
+  <script src="scripts/fullpage.min.js"></script>
+  <script src="scripts/d3.v4.min.js"></script>
+  <script src="https://d3js.org/d3-color.v1.min.js"></script>
+  <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
+  <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+  <script>
+    var charts = {};
+  </script>
+  <script src="scripts/chart1.js"></script>
+  <script src="scripts/chart2.js"></script>
+  <script src="scripts/chart3.js"></script>
+  <script src="scripts/main.js"></script>
+
+  <div id="tooltip"></div><!-- div to hold tooltip. -->
+  <script src="scripts/uStates.js"></script> <!-- creates uStates. -->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</body>
+</html>
