@@ -15,7 +15,7 @@ charts.chart1 = function() {
 
   // get data
   data = d3.csv("/data/chart1.csv", function(data) {
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < 5; i++) {
         console.log(data[i].food);
         console.log(data[i].count);
     }
